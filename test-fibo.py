@@ -5,8 +5,8 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 
 if __name__ == '__main__':
-    seq = []
     x = int(input("Enter a number\n"))
+    seq = []
     for num in range(x):
         seq.append(fib(num))
     print(seq)
