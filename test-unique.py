@@ -7,6 +7,7 @@ def unique1(S):
                 return False
     return True
 
+
 def unique2(S):
     # this function runs in O(n log n)
     temp = sorted(S) # this is O(n log n)
@@ -19,7 +20,23 @@ def unique2(S):
     return True
 
 
+def unique3(S, start, stop):
+    # use recursion to return True if there are no duplicates in slice S[start:stop]
+    # this is O(2 ^ n), very inefficient
+    if (stop - start) <= 1:
+        return True
+    elif not unique3(S, start, stop - 1):
+        return False
+    elif not unique3(S, start + 1, stop):
+        return False
+    else:
+        return S[start] != S[stop-1]
+
+
 if __name__ == '__main__':
     nums = [5, 2, 3, 4, 1, 4]
     print(unique1(nums))
     print(unique2(nums))
+
+    print("unique3, not that efficient with recursion used this way")
+    print(unique3(nums, 0, len(nums)))
