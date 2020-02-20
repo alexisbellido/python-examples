@@ -38,5 +38,5 @@ if __name__ == '__main__':
     print(unique1(nums))
     print(unique2(nums))
 
-    print("unique3, not that efficient with recursion used this way")
+    print("unique3, not an efficient use of recursion")
     print(unique3(nums, 0, len(nums)))
