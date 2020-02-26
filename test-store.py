@@ -1,11 +1,8 @@
 import unittest
+import time
 from store import Store
 
 if __name__ == "__main__":
-
-    Store.set('name', 'Mike')
-
-    # TODO update the tests values
 
     class TestStore(unittest.TestCase):
 
@@ -37,35 +34,41 @@ if __name__ == "__main__":
             self.assertNotIn('country', Store._store.keys())
             self.assertIsNone(Store.get('country'))
 
+        def test_delete(self):
+            Store.set('name', 'Mike')
+            self.assertEqual('Mike', Store.get('name'))
+            Store.delete('name')
+            self.assertNotIn('name', Store._store.keys())
+
         def test_clean(self):
-            Store.set(key='a', value='A', duration=1)
-            Store.set(key='b', value='B', duration=60)
-            Store.set(key='c', value='C', duration=1)
-            Store.set(key='d', value='D', duration=60)
+            Store.set(key='name', value='Mike', duration=1)
+            Store.set(key='country', value='Germany', duration=30)
+            Store.set(key='hobby', value='soccer', duration=60)
+            Store.set(key='age', value=35, duration=1)
 
-            self.assertIn('a', Store._store.keys())
-            self.assertIn('b', Store._store.keys())
-            self.assertIn('c', Store._store.keys())
-            self.assertIn('d', Store._store.keys())
+            self.assertIn('name', Store._store.keys())
+            self.assertIn('country', Store._store.keys())
+            self.assertIn('age', Store._store.keys())
+            self.assertIn('hobby', Store._store.keys())
 
-            # time.sleep(2)
-            # Store.clean()
-            #
-            # self.assertNotIn('a', Store._store.keys())
-            # self.assertIn('b', Store._store.keys())
-            # self.assertNotIn('c', Store._store.keys())
-            # self.assertIn('d', Store._store.keys())
+            time.sleep(2)
+            Store.clean()
+
+            self.assertNotIn('name', Store._store.keys())
+            self.assertIn('country', Store._store.keys())
+            self.assertNotIn('age', Store._store.keys())
+            self.assertIn('hobby', Store._store.keys())
 
         def test_purge(self):
-            Store.set(key='a', value='A')
-            Store.set(key='b', value='B')
-            Store.set(key='c', value='C')
-            Store.set(key='d', value='D')
+            Store.set(key='name', value='Mike')
+            Store.set(key='country', value='Germany')
+            Store.set(key='age', value=35)
+            Store.set(key='hobby', value='soccer')
 
-            self.assertIn('a', Store._store.keys())
-            self.assertIn('b', Store._store.keys())
-            self.assertIn('c', Store._store.keys())
-            self.assertIn('d', Store._store.keys())
+            self.assertIn('name', Store._store.keys())
+            self.assertIn('country', Store._store.keys())
+            self.assertIn('age', Store._store.keys())
+            self.assertIn('hobby', Store._store.keys())
 
             Store.purge()
 

@@ -3,17 +3,19 @@ import time
 class Store:
 
     _store = {}
-    VALUE   = 0
-    EXPIRES = 1
 
     @classmethod
     def get(cls, key):
         """
         Get the value for a key, assuming it hasn't expired.
+        Each key is stored as a tuple (value, expires); those are the indexes 0
+        and 1 used when accessing.
         """
         try:
-            if cls._store[key][cls.EXPIRES] > time.time():
-                return cls._store[key][cls.VALUE]
+            if cls._store[key][1] > time.time():
+                # print(f"tuple for key {key}")
+                # print(cls._store)
+                return cls._store[key][0]
             else:
                 del cls._store[key] # Delete the item if it has expired
                 return None
@@ -34,14 +36,31 @@ class Store:
         return cls.get(key)
 
     @classmethod
+    def delete(cls, key):
+        del cls._store[key]
+
+    @classmethod
     def clean(cls):
         """Remove all expired items from the cache"""
-        for key in cls._store.keys():
-            print(key)
-            # cls.get(key) # Attempting to fetch an expired item deletes it
+        keys = list(cls._store.keys())
+        for key in keys:
+            cls.get(key) # Attempting to fetch an expired item deletes it
 
 
     @classmethod
     def purge(cls):
         """Remove all items from the cache"""
         cls._store = {}
+
+
+if __name__ == "__main__":
+
+    name = Store.set('name', 'Mike')
+    print('name set', Store.get('name'))
+
+    Store.set('animal', 'dog', 2)
+    time.sleep(2)
+    print('animal key expired', Store.get('animal'))
+
+    Store.delete('name')
+    print('name deleted', Store.get('name'))
