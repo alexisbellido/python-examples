@@ -13,12 +13,14 @@ if __name__ == '__main__':
     # x = int(input("Enter a number\n"))
     # print(factorial(x))
     # compare running times of list operations
-    print('Lists')
 
     # for i in range(10000000):
     #     pass
 
-    data = list(range(10000000))
+    n = 10000000
+    data = list(range(n))
+
+    print(f'Lists tests starting with {n:,} elements in data')
 
     start_time = time()
     print('5 in data', 5 in data)
@@ -59,3 +61,15 @@ if __name__ == '__main__':
     start_time = time()
     squares_with_comprehension = [k*k for k in data]
     print(f"squares using list comprehension takes {get_elapsed(start_time)} ms\n")
+
+    # initialize a list of constant values using [0]*n to produce a list
+    # of length n with all values equal to zero is faster than using append
+    start_time = time()
+    new_with_append = []
+    for k in range(n):
+        new_with_append.append(0)
+    print(f"initialize with append takes {get_elapsed(start_time)} ms\n")
+
+    start_time = time()
+    new_with_multiply = [0]*n
+    print(f"initialize with [0]*n takes {get_elapsed(start_time)} ms\n")
