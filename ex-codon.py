@@ -39,7 +39,14 @@ if __name__ == '__main__':
     described as degenerate, or redundant, because a single amino acid may be
     coded for by more than one codon. When codons are read from the nucleotide
     sequence, they are read in succession and do not overlap with one another.
+
+    The genetic code is degenerate. Some amino acids are encoded by more than
+    one codon, inasmuch as there are 64 possible base triplets and only 20 amino acids.
+    In fact, 61 of the 64 possible triplets specify particular amino acids and
+    3 triplets (called stop codons) designate the termination of translation.
+    Thus, for most amino acids, there is more than one code word.
     """
+
     codons = get_codon('codon_table.csv')
     # pprint.pprint(codons, indent=4)
     # dicitionary has to be valid json

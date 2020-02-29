@@ -59,22 +59,26 @@ if __name__ == '__main__':
     living things.
     """
 
-    dna = get_sequence('dna-original.txt')
-    print('sequence')
-    print('=================')
+    # dna = get_sequence('dna-original.txt')
+    dna = "ATGCTGATGATAGGTATGGGTAGATAGATGAGAGAGATGAGAAT"
+    # dna = "ATGCGATGATAGATG"
+    # dna = "ATGC"
 
-    # protein = translate(dna)
-    protein = translate(dna[20:935])
+    # print('sequence')
+    # print('=================')
+
+    protein = translate(dna)
+    # protein = translate(dna[20:935])
     print('processed protein')
     print(protein)
     print('=================')
 
-    original_protein = get_sequence('protein-original.txt')
-    print('original protein')
-    print(original_protein)
-    print('=================')
-
-    print('proteins match', protein == original_protein)
+    # original_protein = get_sequence('protein-original.txt')
+    # print('original protein')
+    # print(original_protein)
+    # print('=================')
+    #
+    # print('proteins match', protein == original_protein)
 
     # combination with repetition of n things in groups of r
     # https://www.mathsisfun.com/combinatorics/combinations-permutations.html
