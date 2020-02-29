@@ -11,6 +11,11 @@ def get_sequence(path):
     return seq
 
 def translate(seq):
+    """
+    In translation, the sequence of nucleotides in the mRNA is translated
+    into a sequence of amino acids in a polypeptide (protein chain).
+    """
+
     table = {
         'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
         'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
@@ -30,11 +35,11 @@ def translate(seq):
         'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
     }
     protein = ""
-    if len(seq) % 3 == 0:
-        for i in range(0, len(seq), 3):
-            codon = seq[i:i + 3]
-            # print('codon', codon)
+    for i in range(0, len(seq), 3):
+        codon = seq[i:i + 3]
+        if len(codon) == 3:
             protein += table[codon]
+
     return protein
 
 if __name__ == '__main__':
@@ -58,6 +63,7 @@ if __name__ == '__main__':
     print('sequence')
     print('=================')
 
+    # protein = translate(dna)
     protein = translate(dna[20:935])
     print('processed protein')
     print(protein)
