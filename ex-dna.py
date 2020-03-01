@@ -1,5 +1,5 @@
+import unittest
 import math
-
 
 def get_sequence(path):
     with open(path) as file:
@@ -59,16 +59,16 @@ if __name__ == '__main__':
     living things.
     """
 
-    # dna = get_sequence('dna-original.txt')
-    dna = "ATGCTGATGATAGGTATGGGTAGATAGATGAGAGAGATGAGAAT"
+    dna = get_sequence('dna-original.txt')
+    # dna = "ATGCTGATGATAGGTATGGGTAGATAGATGAGAGAGATGAGAAT"
     # dna = "ATGCGATGATAGATG"
     # dna = "ATGC"
 
     # print('sequence')
     # print('=================')
 
-    protein = translate(dna)
-    # protein = translate(dna[20:935])
+    # protein = translate(dna)
+    protein = translate(dna[20:935])
     print('processed protein')
     print(protein)
     print('=================')
@@ -86,3 +86,25 @@ if __name__ == '__main__':
     # r = 3
     # combinations = int(math.factorial(r + n -1) / (math.factorial(r) * math.factorial(n - 1)))
     # print(f'combinations with repetition of {n} things in groups of {r}: {combinations}')
+
+    class TestCode(unittest.TestCase):
+
+        def test_one(self):
+            names = ['mike', 'joe']
+            self.assertIn('mike', names)
+            self.assertNotIn('paul', names)
+
+        def test_two(self):
+            countries = None
+            self.assertIsNone(countries)
+
+        def test_three(self):
+            age = 15
+            self.assertEqual(age, 15)
+
+        def test_four(self):
+            with self.assertRaises(TypeError):
+                length = len(100)
+
+
+    unittest.main(verbosity=2)
