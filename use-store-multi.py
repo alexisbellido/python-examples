@@ -7,7 +7,7 @@ from store import Store
 def retrieve_key(block):
     for i in block:
         key = Store.get(f'num-{i}')
-        # print(f'key: num-{i}')
+        print(f'key: num-{i}')
 
 def retrieve_all_keys(blocks):
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
@@ -16,8 +16,8 @@ def retrieve_all_keys(blocks):
 if __name__ == "__main__":
 
     # num = int(input("Enter a number\n"))
+    num = 100
     # num = 10000000
-    num = 10000000
     num_threads = 5
     print(f"Storing {num:,} keys...")
 
