@@ -13,19 +13,21 @@ def lookup_list(x, numbers):
     return False
 
 if __name__ == '__main__':
+    n = int(input("Enter a number to search for\n"))
+
     list = [
         1,2,3,4,5,6,7,8,9,10,11,15,
         1,2,3,4,5,6,7,8,9,10,11,15,
     ]
 
     start_time = process_time()
-    print(lookup_list(15, list))
+    print(lookup_list(n, list))
     end_time = process_time()
     elapsed = end_time - start_time
     print(f"lookup_list {elapsed}")
 
     start_time = process_time()
-    print(lookup_set(20, list))
+    print(lookup_set(n, list))
     end_time = process_time()
     elapsed = end_time - start_time
     print(f"lookup_set {elapsed}")
