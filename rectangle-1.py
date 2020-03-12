@@ -5,17 +5,19 @@ def set_end_position(i, j, input, output, index):
     num_cols = len(input[0])
     skip_number = 5
 
-    # flag to check column edge case, initializing with 0
-    flagc = 0
+    # flag to check column
+    col_edge = 0
 
-    # flag to check row edge case, # initializing with 0
-    flagr = 0
+    # flag to check row edge
+    row_edge = 0
 
+    print('---------------------------------')
+    print('i', i, 'j', j)
     for m in range(i, num_rows):
-
         # loop breaks where first 1 encounters
+        print('m', m, 'j', j)
         if input[m][j] == 1:
-            flagr = 1 # set the flag
+            row_edge = 1
             break
 
         # pass because already processed
@@ -23,26 +25,27 @@ def set_end_position(i, j, input, output, index):
             pass
 
         for n in range(j, num_cols):
-
             # loop breaks where first 1 encounters
             if input[m][n] == 1:
-                flagc = 1 # set the flag
+                col_edge = 1
                 break
 
             # fill rectangle elements with any number so that we can exclude next time
             input[m][n] = skip_number
 
-    if flagr == 1:
+    if row_edge == 1:
         output[index].append(m - 1)
     else:
         # when end point touch the boundary
         output[index].append(m)
 
-    if flagc == 1:
+    if col_edge == 1:
         output[index].append(n - 1)
     else:
         # when end point touch the boundary
         output[index].append(n)
+    print('---------------------------------')
+
 
 if __name__ == '__main__':
     # n = int(input("Enter a number to search for\n"))
