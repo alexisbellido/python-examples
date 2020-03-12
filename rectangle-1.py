@@ -41,6 +41,14 @@ if __name__ == '__main__':
     num_rows = len(input)
     print('num_rows', num_rows)
 
+    num_cols = len(input[0])
+    print('num_cols', num_cols)
+
+    for i in range(0, num_rows):
+        for j in range(0, num_cols):
+            print(input[i][j], end=' ')
+        print()
+
     # row_index = 0
     # for row in input:
     #     # print(f'Row: {count:*>2} | ', end=' ')
