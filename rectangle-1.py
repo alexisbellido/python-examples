@@ -38,6 +38,8 @@ if __name__ == '__main__':
     #     [1, 1, 0, 1, 0],
     # ]
 
+    output = []
+
     num_rows = len(input)
     print('num_rows', num_rows)
 
@@ -45,18 +47,11 @@ if __name__ == '__main__':
     print('num_cols', num_cols)
 
     for i in range(0, num_rows):
+        # print(f'Row: {i:*>2} | ', end=' ')
+        # print(f'Row: {i:>2} | ', end=' ')
         for j in range(0, num_cols):
             print(input[i][j], end=' ')
         print()
-
-    # row_index = 0
-    # for row in input:
-    #     # print(f'Row: {count:*>2} | ', end=' ')
-    #     print(f'Row: {row_index:>2} | ', end=' ')
-    #     row_index += 1
-    #     for col in row:
-    #         print(col, end=' ')
-    #     print()
 
     # start_time = process_time()
     # for x in range(10000):
