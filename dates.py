@@ -1,5 +1,6 @@
 import json
 # import requests
+from datetime import datetime, date
 
 def process_json(path):
     with open(path) as json_file:
@@ -24,9 +25,25 @@ if __name__ == '__main__':
         4: 0,
     }
 
-    for payment in payments:
+    test_dt = datetime(2020, 3, 13, hour = 23, minute = 30)
+    print(test_dt)
+    print('=====')
+
+    test_date = date(2009, 3, 6)
+    print(test_date)
+    print('weekday', test_date.weekday())
+    print(test_date.ctime())
+    print('=====')
+
+    # for payment in payments:
+    for i, payment in enumerate(payments):
         principal = int(payment['principal'])
         start_at = payment['period']['start_at']
         end_at = payment['period']['end_at']
-        print(start_at)
-        break
+        print(i, ': start_at', start_at)
+        the_start_date = datetime.fromisoformat(start_at)
+        print('the_start_date', the_start_date)
+        print(the_start_date.year, the_start_date.month, the_start_date.day)
+        print('------')
+        if i == 5:
+            break
