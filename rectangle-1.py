@@ -104,6 +104,12 @@ if __name__ == '__main__':
 
     print(output)
 
+    # other tests
+    print('enumerate')
+    nums = [10, 20, 30]
+    for index, num in enumerate(nums):
+        print(index, num)
+
     # start_time = process_time()
     # for x in range(10000):
     #     pass

@@ -59,9 +59,10 @@ if __name__ == '__main__':
         end_at = payment['period']['end_at']
         # if (start_at < 2/21/2018 and end_at >)
         if (payment['loan']['borrower_id'] == borrower_id):
+            pass
             # total_principal += payment['principal']
-            print(paid)
-            print('====================')
+            # print(paid)
+            # print('====================')
 
     # print(json.dumps(payments, indent=4))
     # print(f"Name: {data['name']}")
