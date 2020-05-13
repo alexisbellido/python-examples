@@ -120,9 +120,11 @@ str = 'but batman is the best'
 match = re.search(r'\W(?P<name>.*man).*', str)
 print('-----')
 if match:
-    # defaults to zero
+    # match objects https://docs.python.org/3/library/re.html#match-objects
+    # defaults to zero (the whole match is returned)
     print(match.group())
     print(match.group(0))
+    # if it is in the inclusive range [1..99], it is the string matching the corresponding parenthesized group
     print(match.group(1))
     try:
         print(match.group('name'))
@@ -131,14 +133,46 @@ if match:
 else:
     print('nothing to say about that hero')
 
-print('-----')
-pattern = re.compile('(dog|cat)')
+print('----- compiling into regex object')
+# Compile a regular expression pattern into a regular expression object
+prog = re.compile('(dog|cat)')
 animals = ['dog', 'eagle', 'horse', 'cat']
 for animal in animals:
     str = f'my black {animal}'
     print(str)
-    match = pattern.search(str)
+    match = prog.search(str)
     if match:
         print('good:', match.group(1))
 
+print('-----')
+m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
+print(m.groups()) # tuple containing all the subgroups of the match
+print(m.group('first_name'))
+print(m.group('last_name'))
+
+# re.match() checks for a match only at the beginning of the string,
+# while re.search() checks for a match anywhere in the string
+# '^' can be used with search() to restrict the match at the beginning of the string
+print('-----')
+m = re.match("c", "abcdef") # No match
+print(m)
+m = re.search("c", "abcdef") # Match
+print(m)
+
+text = """Ross McFluff: 834.345.1254 155 Elm Street
+Ronald Heathmore: 892.345.3428 436 Finley Avenue
+Frank Burger: 925.541.7625 662 South Dogwood Way
+
+
+Heather Albrecht: 548.326.4584 919 Park Place"""
+# split by one or more new lines
+entries = re.split("\n+", text)
+print(entries)
+
+text = """Ross McFluff: 834.345.1254 155 Elm Street"""
+# note how we use ? to make the colon before the space optional
+# maxsplit is nonzero, at most maxsplit splits occur, and the remainder of the string is returned as the final element of the list
+maxsplit = 3
+fragments = re.split(":? ", text, maxsplit)
+print(fragments)
 
