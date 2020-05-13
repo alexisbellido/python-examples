@@ -4,7 +4,7 @@ import re
 """
 Try it like this.
 
-$ python regex.py --needle "tiger" --haystack "I am looking for a tiger in the jungle"
+$ python3 regex.py --needle "tiger" --haystack "I am looking for a tiger in the jungle"
 """
 
 parser = argparse.ArgumentParser()
@@ -36,6 +36,7 @@ print(f"""Needle: '{args.needle}'. Haystack: '{args.haystack}' """)
 
 str = 'an example word:cat!!'
 # use raw string for pattern
+# it’s highly recommended that you use raw strings for all but the simplest expressions
 # match = re.search(r'word:\w\w\w', str)
 match = re.search(r'\S\S\s\S', str)
 # If-statement after search() tests if it succeeded
@@ -101,4 +102,43 @@ print(tags)
 print('--- substitute')
 str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
 ## re.sub returns a new string with all replacements
+# If - is escaped (e.g. [a\-z]) or if it’s placed as
+# the first or last character (e.g. [-a] or [a-]), it will match a literal '-'.
 print(re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str))
+
+# from https://docs.python.org/3/library/re.html
+str = 'aaa aaa bbb aaa'
+tuples = re.findall(r'(a{3})', str)
+print('-----')
+print(tuples)
+
+# str = 'superman is good'
+# str = 'spiderman is okay'
+str = 'but batman is the best'
+# match = re.search(r'(superman|batman).*', str)
+# match = re.search(r'\W(.*man).*', str)
+match = re.search(r'\W(?P<name>.*man).*', str)
+print('-----')
+if match:
+    # defaults to zero
+    print(match.group())
+    print(match.group(0))
+    print(match.group(1))
+    try:
+        print(match.group('name'))
+    except IndexError:
+        pass
+else:
+    print('nothing to say about that hero')
+
+print('-----')
+pattern = re.compile('(dog|cat)')
+animals = ['dog', 'eagle', 'horse', 'cat']
+for animal in animals:
+    str = f'my black {animal}'
+    print(str)
+    match = pattern.search(str)
+    if match:
+        print('good:', match.group(1))
+
+
