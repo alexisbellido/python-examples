@@ -38,6 +38,9 @@ str = 'an example word:cat!!'
 # use raw string for pattern
 # it’s highly recommended that you use raw strings for all but the simplest expressions
 # match = re.search(r'word:\w\w\w', str)
+
+# re module also provides top-level functions that take the same arguments as
+# the corresponding pattern method with the regex string added as the first argument
 match = re.search(r'\S\S\s\S', str)
 # If-statement after search() tests if it succeeded
 if match:
@@ -144,6 +147,7 @@ for animal in animals:
     if match:
         print('good:', match.group(1))
 
+
 print('-----')
 m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
 print(m.groups()) # tuple containing all the subgroups of the match
@@ -175,4 +179,27 @@ text = """Ross McFluff: 834.345.1254 155 Elm Street"""
 maxsplit = 3
 fragments = re.split(":? ", text, maxsplit)
 print(fragments)
+
+# https://docs.python.org/3/howto/regex.html
+
+
+print('==========')
+# Regular expressions are compiled into pattern objects, which have methods for various operations
+# it can take optional flags
+p = re.compile(r'(a[bcd]*b)', re.IGNORECASE)
+m = p.search('aBcbd')
+# Group 0 is always present; it’s the whole RE, so match object methods all have group 0 as their default argument.
+print(m.group(0))
+# Subgroups are numbered from left to right, from 1 upward
+print(m.group(1))
+# The groups() method returns a tuple containing the strings for all the subgroups, from 1 up to however many there are
+print(m.groups())
+print(m.start())
+print(m.end())
+print(m.span())
+
+p = re.compile(r'\d+')
+results = p.findall('12 drummers drumming, 11 pipers piping, 10 lords a-leaping')
+print(results)
+
 
