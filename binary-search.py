@@ -2,6 +2,7 @@ def binary_search(data, target, low, high):
     """
     Return true if target is found in the indicated portion of the list.
     Search only considers portion from data[low] to data[high] inclusive.
+    Using recursion.
     """
     print("================================")
     print(f"Looking for {target}")
@@ -26,5 +27,6 @@ if __name__ == '__main__':
     data = [1,4,5,6,8,10,13,20,21,24,27,29,33,36,41,43,50,61]
     low = 0
     high = len(data)
-    print(f"initial low: {low} - initial high: {high}")
     print(binary_search(data, target, low, high))
+    print(f"initial low: {low} - initial high: {high}")
+    print('initial list', data)

@@ -43,7 +43,12 @@ if __name__ == '__main__':
         print(i, ': start_at', start_at)
         the_start_date = datetime.fromisoformat(start_at)
         print('the_start_date', the_start_date)
-        print(the_start_date.year, the_start_date.month, the_start_date.day)
+        print('YYYY MM DD', the_start_date.year, the_start_date.month, the_start_date.day)
         print('------')
         if i == 5:
             break
+
+date_from_ts = date.fromtimestamp(228282)
+print('===', date_from_ts)
+now = datetime.now()
+print('now YYYY MM DD', now.year, now.month, now.day)
