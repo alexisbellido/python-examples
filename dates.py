@@ -1,6 +1,6 @@
 import json
 # import requests
-from datetime import datetime, date
+from datetime import datetime, date, time, timedelta
 
 def process_json(path):
     with open(path) as json_file:
@@ -48,7 +48,12 @@ if __name__ == '__main__':
         if i == 5:
             break
 
-date_from_ts = date.fromtimestamp(228282)
-print('===', date_from_ts)
-now = datetime.now()
-print('now YYYY MM DD', now.year, now.month, now.day)
+    date_from_ts = date.fromtimestamp(228282)
+    print('===', date_from_ts)
+    now = datetime.now()
+    print('now YYYY MM DD', now, now.year, now.month, now.day)
+    print(now.strftime('Using strftime: %A, %Y-%m-%d'))
+
+    one_year = timedelta(days=365)
+    day_next_year = now + one_year
+    print('same day next year', day_next_year)
