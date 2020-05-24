@@ -1,0 +1,1 @@
+# find a, b, c, d (each between 1 and 1000) where a^3 + b^3 = c^3 + d^3
