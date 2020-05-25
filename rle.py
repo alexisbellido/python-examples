@@ -2,3 +2,6 @@
 
 # see https://www.youtube.com/watch?v=mjZpZ_wcYFg
 
+if __name__ == '__main__':
+    print()
+
