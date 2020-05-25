@@ -25,8 +25,27 @@ def all_perms(elements):
                 yield perm[:i] + elements[0:1] + perm[i:]
 
 if __name__ == '__main__':
+    
     s = 'abbc'
     b = 'cbabadcbbabbcbabaabccbabc'
+
+    sorted_s = ''.join(sorted(s))
+    print('sorted_s', sorted_s)
+
+    list_perms = []
+    len_s = len(s)
+    for i in range(len(b) - len_s + 1):
+        if b[i] not in s:
+            continue
+        perm = b[i:i+len_s]
+        sorted_perm = ''.join(sorted(perm))
+        # print('i', i, 'sorted_perm', sorted_perm)
+        if sorted_s == sorted_perm:
+            list_perms.append(
+                (i, perm)
+            )
+    print(list_perms)
+
 
     # combination is when order doesn't matter, like a salad with ingredients in different order
     # permutations is when order matters, like a security look that will only work in the right order
@@ -36,10 +55,10 @@ if __name__ == '__main__':
     # permutations without repetitions where n is the number of things to choose r from: n! / (n - r)!
     # if we want all things then r = n and because 0! = 1 the number of permutations is: n!
 
-    nums = [1, 2, 3]
-    count_nums = len(nums)
-    print('count_nums', count_nums)
-    print('possible permutations', math.factorial(count_nums))
+    # nums = [1, 2, 3]
+    # count_nums = len(nums)
+    # print('count_nums', count_nums)
+    # print('possible permutations', math.factorial(count_nums))
 
     # print(get_permutations(nums))
 
@@ -48,8 +67,8 @@ if __name__ == '__main__':
     # print(permutations)
     
     # use for loop with iterator
-    for perm in all_perms(nums):
-        print(perm)
+    # for perm in all_perms(nums):
+    #     print(perm)
 
 
 
