@@ -21,22 +21,32 @@ def find_pairs_2(nums, k):
     """
     a better approach
     """
-    print('------')
-    sorted_nums = sorted(nums)
-    print(sorted_nums)
-    dict_nums = {}
-    for num in nums:
-        dict_nums[num] = True
-    print(dict_nums)
     pairs = []
+    sorted_nums = sorted(nums)
+    print('k', k, 'sorted', sorted_nums)
+    dict_nums = {k: v for k, v in zip(sorted_nums, sorted_nums)}
+    for key in dict_nums:
+        if (key + k) in dict_nums:
+            pair = (key, key + k)
+            pairs.append(pair)
     return pairs
 
 if __name__ == '__main__':
     nums = [1, 7, 5, 9, 2, 12, 3]
     k = 2
 
+    print('brute force')
     pairs = find_pairs_bf(nums, k)
     print(pairs)
 
+    print('with hash table 1')
     pairs = find_pairs_2(nums, k)
     print(pairs)
+
+    print('with hash table 2')
+    nums = [1, 7, 5, 9, 2, 12, 3]
+    k = 3
+    pairs = find_pairs_2(nums, k)
+    print(pairs)
+
+
