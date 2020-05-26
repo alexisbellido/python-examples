@@ -15,9 +15,20 @@ if __name__ == '__main__':
         1: 'snake',
         5: 'cow',
     }
-    for k in d:
-        print(k, d[k])
+    # unsorted
+    # for k in d:
+    #     print(k, d[k])
+    # print items in dictionary as tuples
+    # print(d.items())
+    # sort those tuples
+    # print(sorted(d.items()))
+    # loop over them and print elements from original dictionary in sorted order
+    for item in sorted(d.items()):
+        print(item[0], d[item[0]])
 
+    # find pairs of elements from a and b that add up closest to sum
+    # brute force
+    print('=== using brute force')
     a = [-1, 3, 8, 2, 9, 5]
     b = [4, 1, 2, 10, 5, 20]
     sum = 24
@@ -36,5 +47,22 @@ if __name__ == '__main__':
             found += 1
         delta += 1
 
-
+    # using a set to put all elements of a and then loop over b checking if
+    # set_a contains a number that produces the sum or something close with a delta
+    print('=== using set')
+    set_a = set(a)
+    sum = 24
+    delta = 0
+    found = 0
+    while found < 2:
+        for j in b:
+            if (sum - j) + delta in set_a:
+                # print('add to found X')
+                print(sum + delta, (sum - j) + delta, j)
+                found += 1
+            if (sum - j) - delta in set_a:
+                # print('add to found Y')
+                print(sum - delta, (sum - j) - delta, j)
+                found += 1
+        delta += 1
 
