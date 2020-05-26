@@ -24,27 +24,35 @@ def all_perms(elements):
             for i in range(len(elements)):
                 yield perm[:i] + elements[0:1] + perm[i:]
 
+def perm_chars(s):
+    print(s)
+    return None
+
 if __name__ == '__main__':
-    
-    s = 'abbc'
-    b = 'cbabadcbbabbcbabaabccbabc'
 
-    sorted_s = ''.join(sorted(s))
-    print('sorted_s', sorted_s)
+    # TODO from Cracking Code book    
+    s = 'abc'
+    print(perm_chars(s))
 
-    list_perms = []
-    len_s = len(s)
-    for i in range(len(b) - len_s + 1):
-        if b[i] not in s:
-            continue
-        perm = b[i:i+len_s]
-        sorted_perm = ''.join(sorted(perm))
-        # print('i', i, 'sorted_perm', sorted_perm)
-        if sorted_s == sorted_perm:
-            list_perms.append(
-                (i, perm)
-            )
-    print(list_perms)
+    # s = 'abbc'
+    # b = 'cbabadcbbabbcbabaabccbabc'
+
+    # sorted_s = ''.join(sorted(s))
+    # print('sorted_s', sorted_s)
+
+    # list_perms = []
+    # len_s = len(s)
+    # for i in range(len(b) - len_s + 1):
+    #     if b[i] not in s:
+    #         continue
+    #     perm = b[i:i+len_s]
+    #     sorted_perm = ''.join(sorted(perm))
+    #     # print('i', i, 'sorted_perm', sorted_perm)
+    #     if sorted_s == sorted_perm:
+    #         list_perms.append(
+    #             (i, perm)
+    #         )
+    # print(list_perms)
 
 
     # combination is when order doesn't matter, like a salad with ingredients in different order
