@@ -31,13 +31,23 @@ class ArrayQueue:
         return self._data[self._front]
     
     def dequeue(self):
-        """remove and return first element of the queue (FIFO)"""
+        """
+        remove and return first element of the queue (FIFO)
+        initial implementation never shrinks the underlying array
+        """
         if self.is_empty():
             raise Empty('Queue is empty')
         answer = self._data[self._front]
         self._data[self._front] = None # help garbage collection
         # use module to advance in array in a circular way
         self._front = (self._front + 1) % len(self._data)
+        # print('self._size=', self._size)
+        # print('len(self._data) =', len(self._data))
+        # print('len(self._data) // 4 =', len(self._data) // 4)
+        # reduce the array to half of its current size
+        # whenever the number of elements stored falls below one fourth of its capacity
+        if 0 < self._size < len(self._data) // 4:
+            self._resize(len(self._data) // 2)
         self._size -= 1
         return answer
     
@@ -62,7 +72,6 @@ class ArrayQueue:
             self._data[k] = old[walk]
             walk = (walk + 1) % len(old)
         self._front = 0 # new resized list will have front at zero
-
 
 if __name__ == "__main__":
     q = ArrayQueue()
@@ -92,6 +101,15 @@ if __name__ == "__main__":
 
     print('first', q.first())
 
+    q.enqueue(2)
+    print(q._data)
+
+    q.enqueue(4)
+    print(q._data)
+
+    q.enqueue(3)
+    print(q._data)
+
     q.enqueue(11)
     print(q._data)
 
@@ -99,4 +117,24 @@ if __name__ == "__main__":
     print(q._data)
 
     print('first', q.first())
+
+    print('dequeue', q.dequeue())
+    print(q._data)
+    print('dequeue', q.dequeue())
+    print(q._data)
+    print('dequeue', q.dequeue())
+    print(q._data)
+    print('dequeue', q.dequeue())
+    print(q._data)
+    print('dequeue', q.dequeue())
+    print(q._data)
+
+    print('dequeue', q.dequeue())
+    print(q._data)
+    print('dequeue', q.dequeue())
+    print(q._data)
+    print('dequeue', q.dequeue())
+    print(q._data)
+
+
 
