@@ -7,7 +7,7 @@ class Empty(Exception):
 
 class ArrayStack:
     """
-    LIFO stack implementatino using a Python list as the
+    LIFO stack implementation using a Python list as the
     underlying storage.
     """
 
