@@ -1,3 +1,5 @@
+from collections import Counter
+
 def is_unique(str):
     """check if string contains all unique characters, assume just 128 ASCII characters"""
     char_list = [False] * 128
@@ -12,6 +14,7 @@ def is_unique(str):
     return True
 
 def are_permutations(s, t):
+    """turn into lists, sort, and compare"""
     if len(s) != len(t):
         return False
     s_list = list(s)
@@ -19,6 +22,17 @@ def are_permutations(s, t):
     t_list = list(t)
     t_list.sort()
     return s_list == t_list
+
+def are_permutations_2(s, t):
+    """permutations are two words with the same character counts"""
+    if len(s) != len(t):
+        return False
+    s_counter = Counter(s)
+    t_counter = Counter(t)
+    for c in s_counter:
+        if s_counter[c] != t_counter[c]:
+            return False
+    return True
 
 if __name__ == "__main__":
 
@@ -34,8 +48,8 @@ if __name__ == "__main__":
     t = "horse"
     print(s, t, are_permutations(s, t))
 
-    s = "dog"
-    t = "god"
+    s = "ab"
+    t = "ba"
     print(s, t, are_permutations(s, t))
 
     s = "cat"
@@ -45,3 +59,19 @@ if __name__ == "__main__":
     s = "ratona"
     t = "tonara"
     print(s, t, are_permutations(s, t))
+
+    s = "ab"
+    t = "ba"
+    print(s, t, are_permutations_2(s, t))
+
+    s = "dog"
+    t = "gdo"
+    print(s, t, are_permutations_2(s, t))
+
+    s = "ratona"
+    t = "tonara"
+    print(s, t, are_permutations_2(s, t))
+
+    s = "ratona"
+    t = "tonarb"
+    print(s, t, are_permutations_2(s, t))
