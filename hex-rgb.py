@@ -15,4 +15,10 @@ def hexToRgb(value):
 if __name__ == "__main__":
     print(hexToRgb("#f5e942")) # RGB: 245, 233, 66
     print(0b111)
+
+    print(int('0x10', 16))
+    print(int(0x10))
+
+    print(int(0b1111))
+    print(int('0b1011', 2))
     
