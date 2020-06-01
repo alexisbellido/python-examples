@@ -34,6 +34,7 @@ class ArrayQueue:
         """
         remove and return first element of the queue (FIFO)
         initial implementation never shrinks the underlying array
+        pronounced like the abbreviation "D.Q."
         """
         if self.is_empty():
             raise Empty('Queue is empty')
@@ -88,6 +89,8 @@ if __name__ == "__main__":
     print('dequeue', q.dequeue())
     print(q._data)
 
+    print('len(q)', len(q))
+
     print('first', q.first())
 
     print('dequeue', q.dequeue())
@@ -135,6 +138,9 @@ if __name__ == "__main__":
     print(q._data)
     print('dequeue', q.dequeue())
     print(q._data)
+
+    print('len(q)', len(q))
+
 
 
 
