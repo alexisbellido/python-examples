@@ -40,6 +40,6 @@ def find_nums_2(n):
     return tuples
 
 if __name__ == '__main__':
-    n = 3
+    n = 100
     # print(find_nums_bf(n))
     print(find_nums_2(n))

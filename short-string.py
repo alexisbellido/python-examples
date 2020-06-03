@@ -31,28 +31,32 @@ def perm_chars(s):
 if __name__ == '__main__':
 
     # TODO from Cracking Code book    
-    s = 'abc'
-    print(perm_chars(s))
+    # s = 'abc'
+    # print(perm_chars(s))
 
-    # s = 'abbc'
-    # b = 'cbabadcbbabbcbabaabccbabc'
+    # print('all_perms of s')
+    # for p in all_perms(s):
+    #     print(p)
 
-    # sorted_s = ''.join(sorted(s))
-    # print('sorted_s', sorted_s)
+    s = 'abbc'
+    b = 'cbabadcbbabbcbabaabccbabc'
 
-    # list_perms = []
-    # len_s = len(s)
-    # for i in range(len(b) - len_s + 1):
-    #     if b[i] not in s:
-    #         continue
-    #     perm = b[i:i+len_s]
-    #     sorted_perm = ''.join(sorted(perm))
-    #     # print('i', i, 'sorted_perm', sorted_perm)
-    #     if sorted_s == sorted_perm:
-    #         list_perms.append(
-    #             (i, perm)
-    #         )
-    # print(list_perms)
+    sorted_s = ''.join(sorted(s))
+    print('sorted_s', sorted_s)
+
+    list_perms = []
+    len_s = len(s)
+    for i in range(len(b) - len_s + 1):
+        if b[i] not in s:
+            continue
+        perm = b[i:i+len_s]
+        sorted_perm = ''.join(sorted(perm))
+        # print('i', i, 'sorted_perm', sorted_perm)
+        if sorted_s == sorted_perm:
+            list_perms.append(
+                (i, perm)
+            )
+    print(list_perms)
 
 
     # combination is when order doesn't matter, like a salad with ingredients in different order
