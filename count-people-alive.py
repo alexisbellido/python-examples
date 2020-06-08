@@ -49,9 +49,9 @@ def update_deltas(deltas, first_birth, last_birth, person):
     deltas[birth_index] += 1
 
     death = person[1]
-    if death <= last_birth:
-        death_index = death - first_birth
-        print(f'death {death} - decrement index {death_index}')
+    if (death + 1) <= last_birth:
+        death_index = (death + 1) - first_birth
+        print(f'year after death {death + 1} - decrement index {death_index}')
         deltas[death_index] -= 1
 
 def get_deltas(people, first_birth, last_birth):
@@ -62,18 +62,25 @@ def get_deltas(people, first_birth, last_birth):
         update_deltas(deltas, first_birth, last_birth, person)
     return deltas
 
-def get_running_sum_index(deltas):
+def get_index_max_running_sum(deltas):
+    running_sum = 0
+    max_running_sum = 0
+    peak_index = 0 # the index of the year with maximum population
     for index, count in enumerate(deltas):
         print(index, count)
+        running_sum += count
+        if running_sum > max_running_sum:
+            max_running_sum = running_sum
+            peak_index = index
+    return peak_index, max_running_sum
 
-
-def get_max_year(people):
+def get_year_max_population(people):
     first_birth, last_birth = get_first_last_births(people)
     # print(f'first_birth {first_birth}, last_birth {last_birth}')
     deltas = get_deltas(people, first_birth, last_birth)
     # print(deltas)
-    get_running_sum_index(deltas)
-    return 0
+    peak_index, max_running_sum = get_index_max_running_sum(deltas)
+    return peak_index + first_birth, max_running_sum
 
 if __name__ == "__main__":
     people = [
@@ -85,15 +92,20 @@ if __name__ == "__main__":
         # (2001, 2022),
         # (1980, 1987),
         # (1979, 1987),
-        (1981, 1984),
-        (1982, 1985),
-        (1984, 1986),
+        # (1981, 1984),
+        # (1982, 1985),
+        # (1984, 1986),
+        (1980, 1982),
+        (1982, 1983),
+        (1981, 1982),
+        (1981, 1981),
     ]
 
     # brute_force(people)
 
-    max_year = get_max_year(people)
-    print('max_year', max_year)
+    year_max_population, max_running_sum = get_year_max_population(people)
+    print('year_max_population', year_max_population)
+    print('max_running_sum', max_running_sum)
 
     # somethig more efficient only checking years when something happens, birth or death
     # write as functions in a modular way by creating array of deltas first
