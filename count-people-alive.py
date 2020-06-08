@@ -31,6 +31,21 @@ def brute_force(people):
     
     print(f'year_max_alive {year_max_alive} max_alive {max_alive}')
 
+def get_min_max_births(people):
+    min_birth = 2999
+    max_birth = 0
+    return min_birth, max_birth
+
+def get_deltas(people):
+    deltas = []
+    return deltas
+
+def get_max_year(people):
+    deltas = get_deltas(people)
+    min_birth, max_birth = get_min_max_births(people)
+    # print(f'min_birth {min_birth}, max_birth {max_birth}')
+    return 0
+
 if __name__ == "__main__":
     people = [
         (1920, 1980),
@@ -43,7 +58,10 @@ if __name__ == "__main__":
         (1984, 1986),
     ]
 
-    brute_force(people)
+    # brute_force(people)
+
+    max_year = get_max_year(people)
+    print('max_year', max_year)
 
     # somethig more efficient only checking years when something happens, birth or death
     # write as functions in a modular way by creating array of deltas first
@@ -51,22 +69,22 @@ if __name__ == "__main__":
     # Note it may be better to use an array so that the indexes can be used as the actual year
     # by playing with an offset
     # see https://vimeo.com/158532188
-    print("-------")
-    years_set = set()
-    years_count_2 = {}
-    for p in people:
-        birth = p[0]
-        # deaths decrement the population so no need to check those years
-        # death = p[1]
-        years_set.add(birth)
-        # years_set.add(death)
-        # print('birth', birth, 'death', death)
-        # print('-----------')
+    # print("-------")
+    # years_set = set()
+    # years_count_2 = {}
+    # for p in people:
+    #     birth = p[0]
+    #     # deaths decrement the population so no need to check those years
+    #     # death = p[1]
+    #     years_set.add(birth)
+    #     # years_set.add(death)
+    #     # print('birth', birth, 'death', death)
+    #     # print('-----------')
 
-    # years_set = sorted(years_set) # do I need to turn set into a sorted list?
-    # print('years_set', years_set)
-    for year in years_set:
-        print('year to check', year)
+    # # years_set = sorted(years_set) # do I need to turn set into a sorted list?
+    # # print('years_set', years_set)
+    # for year in years_set:
+    #     print('year to check', year)
 
 
 
