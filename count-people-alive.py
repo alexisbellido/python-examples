@@ -31,30 +31,62 @@ def brute_force(people):
     
     print(f'year_max_alive {year_max_alive} max_alive {max_alive}')
 
-def get_min_max_births(people):
-    min_birth = 2999
-    max_birth = 0
-    return min_birth, max_birth
+def get_first_last_births(people):
+    first_birth = 2999
+    last_birth = 0
+    for p in people:
+        birth = p[0]
+        if birth < first_birth:
+            first_birth = birth
+        if birth > last_birth:
+            last_birth = birth
+    return first_birth, last_birth
 
-def get_deltas(people):
-    deltas = []
+def update_deltas(deltas, first_birth, last_birth, person):
+    birth = person[0]
+    birth_index = birth - first_birth
+    print(f'birth {birth} - increment index {birth_index}')
+    deltas[birth_index] += 1
+
+    death = person[1]
+    if death <= last_birth:
+        death_index = death - first_birth
+        print(f'death {death} - decrement index {death_index}')
+        deltas[death_index] -= 1
+
+def get_deltas(people, first_birth, last_birth):
+    # initialize deltas array with zeroes
+    # considering an offset equal to first_birth
+    deltas = [0] * (last_birth - first_birth + 1)
+    for person in people:
+        update_deltas(deltas, first_birth, last_birth, person)
     return deltas
 
+def get_running_sum_index(deltas):
+    for index, count in enumerate(deltas):
+        print(index, count)
+
+
 def get_max_year(people):
-    deltas = get_deltas(people)
-    min_birth, max_birth = get_min_max_births(people)
-    # print(f'min_birth {min_birth}, max_birth {max_birth}')
+    first_birth, last_birth = get_first_last_births(people)
+    # print(f'first_birth {first_birth}, last_birth {last_birth}')
+    deltas = get_deltas(people, first_birth, last_birth)
+    # print(deltas)
+    get_running_sum_index(deltas)
     return 0
 
 if __name__ == "__main__":
     people = [
-        (1920, 1980),
-        (1930, 1950),
-        (2001, 2035),
-        (1820, 1901),
-        (1930, 2035),
-        (2001, 2022),
-        (1980, 1984),
+        # (1920, 1980),
+        # (1930, 1950),
+        # (2001, 2035),
+        # (1820, 1901),
+        # (1930, 2035),
+        # (2001, 2022),
+        # (1980, 1987),
+        # (1979, 1987),
+        (1981, 1984),
+        (1982, 1985),
         (1984, 1986),
     ]
 
