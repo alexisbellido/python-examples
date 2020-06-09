@@ -47,7 +47,7 @@ class ArrayQueue:
         # print('len(self._data) =', len(self._data))
         # print('len(self._data) // 4 =', len(self._data) // 4)
         # reduce the array to half of its current size
-        # whenever the number of elements stored falls below one fourth of its capacity
+        # whenever the number of elements stored falls below one fourth of the list capacity
         if 0 < self._size < len(self._data) // 4:
             self._resize(len(self._data) // 2)
         self._size -= 1
