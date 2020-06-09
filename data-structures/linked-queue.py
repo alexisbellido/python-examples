@@ -70,3 +70,22 @@ class LinkedQueue():
 if __name__ == "__main__":
     lq = LinkedQueue()
     print('lq', lq)
+    lq.enqueue('one')
+    lq.enqueue('two')
+    lq.enqueue('three')
+    print('first element:', lq.first())
+
+    print('dequeue:', lq.dequeue())
+    print('first element:', lq.first())
+
+    print('dequeue:', lq.dequeue())
+    print('first element:', lq.first())
+
+    try:
+        print('dequeue:', lq.dequeue())
+        print('first element:', lq.first())
+    except Empty:
+        print('-= queue empty =-')
+
+    lq.enqueue('four')
+    print('first element:', lq.first())
