@@ -8,7 +8,8 @@ class Empty(Exception):
 class ArrayQueue:
     """
     FIFO queue implementation using a Python list as the
-    underlying storage.
+    underlying storage. Note modulo operations are always against
+    the size, the capacity, of this list, not the number of elements in the queue.
     Using a Python list in circular fashion with modular arithmetic.
     """
     # test with a small number but should be bigger in practice
