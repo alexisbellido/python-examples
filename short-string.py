@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
 
     # combination is when order doesn't matter, like a salad with ingredients in different order
-    # permutations is when order matters, like a security look that will only work in the right order
+    # permutations is when order matters, like a security lock that will only work in the right order
 
     # permutations with repetitions of n things in groups of r: n ** r
 
