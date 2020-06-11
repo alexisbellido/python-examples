@@ -111,8 +111,8 @@ def get_rle_1(text):
         encoded += char + str(num)
     return encoded
 
-
 if __name__ == '__main__':
+
     text = 'aawppppcxx'
     print(text)
     encoded = get_rle_1(text)
@@ -130,5 +130,6 @@ if __name__ == '__main__':
     encoded = get_rle_1(text)
     print(encoded)
     print('--')
+
 
 
