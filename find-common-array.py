@@ -2,6 +2,8 @@ def out_of_bounds(a, b, c, x, y, z):
     return x >= len(a) or y >= len(b) or z >= len(c)
 
 def find_common(a, b, c):
+    # loop three arrays at the same time
+    # these are the indexes
     x = 0
     y = 0
     z = 0

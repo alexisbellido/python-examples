@@ -45,8 +45,7 @@ def is_pal_with_deque(word):
     d = deque(str(word))
     if len(d) <= 1:
         return True
-    found = False
-    while not found and len(d) > 1:
+    while len(d) > 1:
         head = d.popleft()
         tail = d.pop()
         if head != tail:
@@ -68,15 +67,17 @@ def is_pal_with_half_list(word):
 
 if __name__ == '__main__':
 
-    # num = 119
-    # p_num = get_next_pal(num, is_pal_with_reverse)
-    # print(f'Started at {num} and found {p_num}')
+    # num = 12521
+    # print(is_pal_with_deque(num))
 
-    # num = 119
-    # p_num = get_next_pal(num, is_pal_with_deque)
-    # print(f'Started at {num} and found {p_num}')
+    num = 119
+    p_num = get_next_pal(num, is_pal_with_reverse)
+    print(f'Started at {num} and found {p_num}')
 
-    # num = '537373a'
+    num = 119
+    p_num = get_next_pal(num, is_pal_with_deque)
+    print(f'Started at {num} and found {p_num}')
+
     num = 537373
     p_num = get_next_pal(num, is_pal_with_half_list)
     if p_num:
