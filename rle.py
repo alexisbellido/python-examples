@@ -3,14 +3,6 @@
 
 # see https://www.youtube.com/watch?v=mjZpZ_wcYFg
 
-# def sum(nums):
-#     output = []
-#     for i in nums:
-#         if i == 0:
-#             output.append(nums[i])
-
-#     return output
-
 #  a  a  w  p  p  p  p  c  x
 
 # prev = None
@@ -89,11 +81,11 @@
 
 
 def get_rle_1(text):
-    encoded = ''
     prev = None
+    count = 1
+    encoded = ''
     char_list = []
     count_list = []
-    count = 1
     for cur in text:
         if cur != prev:
             char_list.append(cur)
@@ -111,25 +103,46 @@ def get_rle_1(text):
         encoded += char + str(num)
     return encoded
 
+def get_rle_2(text):
+    prev = None
+    count = 1
+    encoded = []
+    for cur in text:
+        if cur == prev:
+            count += 1
+        else:
+            if prev is not None:
+                encoded.append(prev + str(count))
+            count = 1
+        prev = cur
+    encoded.append(prev + str(count))
+    return ''.join(encoded)
+
 if __name__ == '__main__':
 
     text = 'aawppppcxx'
     print(text)
     encoded = get_rle_1(text)
-    print(encoded)
-    print('--')
-    
-    text = 'awp'
-    print(text)
-    encoded = get_rle_1(text)
-    print(encoded)
+    print('rle_1:', encoded)
     print('--')
 
-    text = 'XXXXX'
+    text = 'aawppppcxx'
     print(text)
-    encoded = get_rle_1(text)
-    print(encoded)
+    encoded = get_rle_2(text)
+    print('rle_2:', encoded)
     print('--')
+    
+    # text = 'awp'
+    # print(text)
+    # encoded = get_rle_1(text)
+    # print(encoded)
+    # print('--')
+
+    # text = 'XXXXX'
+    # print(text)
+    # encoded = get_rle_1(text)
+    # print(encoded)
+    # print('--')
 
 
 
