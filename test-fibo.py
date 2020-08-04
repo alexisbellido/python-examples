@@ -1,7 +1,7 @@
 def fib(n):
     """
     Given a number n, print nth Fibonacci number.
-    Time complexity: T(n) = T(n-1) + T(n-2), exponential
+    Time complexity: T(n) = T(n-1) + T(n-2), exponential: O(2^n)
     """
     if n < 0: 
         print("Incorrect input") 

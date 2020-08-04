@@ -6,7 +6,7 @@ def find_max_square(matrix):
     Space complexity : O(mn)
     """
     cache = copy.deepcopy(matrix)
-    result = 0
+    result = 0  
     rows = len(matrix)
     cols = len(matrix[0])
 
