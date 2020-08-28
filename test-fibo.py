@@ -45,9 +45,9 @@ def fib_bottom_up(n):
     bottom_up = []
     bottom_up.append(0)
     bottom_up.append(1)
-    bottom_up.append(1)
+    # bottom_up.append(1)
     # print(bottom_up)
-    for i in range(3, n):
+    for i in range(2, n):
         bottom_up.append(bottom_up[i - 1] + bottom_up[i - 2])
     return bottom_up
 
