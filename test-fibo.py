@@ -105,6 +105,7 @@ if __name__ == '__main__':
         # print('fib_memo of', i, fib_memo(i, memo))
         fib_memo_list.append(fib_memo(i, memo))
     print(fib_memo_list)
+    print('memo list', memo)
 
     # creates the array with results from the bottom up inside the function
     print('=== fib_bottom_up', n, fib_bottom_up(n))
