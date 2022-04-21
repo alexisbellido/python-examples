@@ -20,6 +20,10 @@ def draw_ruler(num_inches, major_length):
         draw_line(major_length, str(j)) # draw inch j line and label
 
 if __name__ == '__main__':
-    num_inches = int(input("Enter the number of inches\n"))
-    major_length = int(input("Enter major length\n"))
+    # num_inches = int(input("Enter the number of inches\n"))
+    # major_length = int(input("Enter major length\n"))
+
+    num_inches = 2
+    major_length = 4
+
     draw_ruler(num_inches, major_length)

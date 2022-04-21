@@ -7,12 +7,13 @@ def factorial(n):
 
 def naive_factorial(n):
     fact = 1
-    for i in range(1,n+1):
+    for i in range(1, n+1):
         fact = fact * i
     return fact
 
 
 if __name__ == '__main__':
-    x = int(input("Enter a number\n"))
+    # x = int(input("Enter a number\n"))
+    x = 5
     print(factorial(x))
     print(naive_factorial(x))
