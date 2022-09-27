@@ -1,6 +1,6 @@
 def hexToRgb(value):
     # Convert string to hexadecimal number (base 16)
-    num = (int(value.lstrip("#"), 16))
+    num = int(value.lstrip("#"), 16)
 
     # Shift 16 bits to the right, and then binary AND to obtain 8 bits representing red
     r = ((num >> 16) & 0xFF)

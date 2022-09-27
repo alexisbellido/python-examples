@@ -2,6 +2,7 @@ import json
 # import requests
 from datetime import datetime, date, time, timedelta
 
+
 def process_json(path):
     with open(path) as json_file:
         data = json.load(json_file)
