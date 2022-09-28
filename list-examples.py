@@ -33,24 +33,93 @@ def check_contains_2(string_list, larger_string):
   intersection = set(string_list).intersection(larger_string.split())
   return len(intersection) > 0
 
+def remove_duplicates(words):
+  no_dupes = []
+  for word in words:
+    if word not in no_dupes:
+      no_dupes.append(word)
+  return no_dupes
+
+def remove_duplicates_2(words):
+  no_dupes_set = set(words)
+  return list(no_dupes_set)
+
+def fizzbuzz(numbers):
+  # I should replace, not create a new list
+  for i in range(len(numbers)):
+    if numbers[i] % 3 == 0 and numbers[i] % 5 == 0:
+      numbers[i] = 'fizzbuzz'
+    elif numbers[i] % 3 == 0:
+      numbers[i] = 'fizz'
+    elif numbers[i] % 5 == 0:
+      numbers[i] = 'buzz'
+  return numbers
+
+def fizzbuzz_2(numbers):
+  for i, num in enumerate(numbers):
+    if num % 3 == 0 and num % 5 == 0:
+      numbers[i] = 'fizzbuzz'
+    elif num % 3 == 0:
+      numbers[i] = 'fizz'
+    elif num % 5 == 0:
+      numbers[i] = 'buzz'
+  return numbers
+
+def get_animal_age(animal):
+  return animal['age']
+
 if __name__ == '__main__':
 
-  words = [
-    'cat',
-    'dog',
-    'octopus',
-    'horse',
+  numbers = [9, 20, 4, 1, 7, 5, 25, 15, 6, 30]
+  print(numbers)
+  print(fizzbuzz(numbers))
+  print("\n================\n")
+
+  numbers = [9, 20, 4, 1, 7, 5, 25, 15, 6, 30]
+  print(numbers)
+  print(fizzbuzz_2(numbers))
+
+  print("\n================\n")
+
+  animals = [
+    {'type': 'penguin', 'name': 'Stephanie', 'age': 8},
+    {'type': 'elephant', 'name': 'Devon', 'age': 3},
+    {'type': 'puma', 'name': 'Moe', 'age': 5},
   ]
 
-  longest_word = find_longest_words_1(words)
+  animals_by_age = sorted(animals, key = lambda animal: animal['age'], reverse=True)
+  print(animals_by_age)
+  print("\n================\n")
 
-  print(words)
-  print(longest_word)
+  animals_by_age_2 = sorted(animals, key = get_animal_age)
+  print(animals_by_age_2)
+  print("\n================\n")
 
-  longest_word_2 = find_longest_words_2(words)
-  print(longest_word_2)
+  # words = [
+  #   'cat',
+  #   'dog',
+  #   'octopus',
+  #   'horse',
+  # ]
 
-  larger_string = 'the horse came to my house'
-  larger_string_2 = 'the bird never came'
-  print(check_contains(words, larger_string))
-  print(check_contains_2(words, larger_string))
+  # longest_word = find_longest_words_1(words)
+
+  # print(words)
+  # print(longest_word)
+
+  # longest_word_2 = find_longest_words_2(words)
+  # print(longest_word_2)
+
+  # larger_string = 'the horse came to my house'
+  # larger_string_2 = 'the bird never came'
+  # print(check_contains(words, larger_string))
+  # print(check_contains_2(words, larger_string))
+
+  # print("\n================\n")
+
+  # words = ['hello', 'morning', 'roof', 'roof', 'eagle']
+  # print(remove_duplicates(words))
+  # print(remove_duplicates_2(words))
+
+  # print("\n================\n")
+
