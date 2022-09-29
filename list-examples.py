@@ -1,4 +1,5 @@
 import functools
+from collections import Counter
 
 def find_longest_words_2(words):
   # with functional programming
@@ -93,6 +94,46 @@ if __name__ == '__main__':
 
   animals_by_age_2 = sorted(animals, key = get_animal_age)
   print(animals_by_age_2)
+  print("\n================\n")
+
+  # using generator instead of list comprehension to save memory
+
+  squares_list = [i * i for i in range(20)]
+  print(sum(squares_list))
+
+  square_list_gen = (i * i for i in range(20))
+  print(sum(square_list_gen))
+
+  print("\n================\n")
+
+  # default values in dictionaries
+
+  # cowboy = {'name': 'victor', 'age': 32, 'horse': 'mustang', 'hat_size': 'large'}
+  cowboy = {'age': 32, 'horse': 'mustang', 'hat_size': 'large'}
+  if 'name' in cowboy:
+    name = cowboy['name']
+  else:
+    name = 'The man with no name'
+  print(name)
+
+  # better
+
+  name_2 = cowboy.get('name', 'The man with no name using get')
+  print(name_2)
+
+  # But what if you want to update the dictionary with a default value while still accessing the name key?
+
+  name_3 = cowboy.setdefault('name', 'The Man with no name using setdefault')
+  print(name_3)
+
+  print("\n================\n")
+
+  numbers = [1, 3, 5, 2, 4, 8, 11, 2, 3, 3, 3]
+  counts = Counter(numbers)
+  print(counts[5])
+  print(counts[3])
+  print(counts.most_common())
+
   print("\n================\n")
 
   # words = [
