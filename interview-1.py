@@ -21,7 +21,7 @@ def is_prime(n):
       return False
   return True
 
-def are_words_anagram(word_1, word_2):
+def are_anagrams(word_1, word_2):
   """
   two strings are anagrams if they are made of the same
   characters with the same frequencies
@@ -63,10 +63,12 @@ if __name__ == '__main__':
   # primes = get_primes(100, 200)
   # print(primes)
 
-  print(are_words_anagram('garden', 'danger'))
+  print(are_anagrams('garden', 'danger'))
 
   print('\n-------------------\n')
 
-  # print(are_words_anagram('xxxgarden', 'dangereri'))
+  print(are_anagrams('xxxgarden', 'dangereri'))
 
-  # print('garden', 'ostrich', are_words_anagram('garden', 'ostrich'))
+  print('\n-------------------\n')
+
+  print(are_anagrams('garden', 'ostrich'))
